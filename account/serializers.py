@@ -32,3 +32,8 @@ class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model=HouseOwner
         fields=['id', 'email', 'first_name', 'last_name']
+
+class UserEmailOTPSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    otp = serializers.CharField()
+
