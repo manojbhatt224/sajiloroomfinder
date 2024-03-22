@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from account.models import HouseOwner
+from django.core.validators import validate_email
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
     password2=serializers.CharField(style={'input_type':'password'}, write_only=True)
@@ -11,6 +12,9 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         }
     # Validating Password and Confirm Password while Registration
     def validate(self,attrs):
+        email=attrs.get('email')
+        if validate_email(email):
+            raise serializers.ValidationError('Please provide appropriate email!')
         password=attrs.get('password')
         password2=attrs.get('password2')
         if password != password2:

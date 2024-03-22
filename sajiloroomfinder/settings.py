@@ -31,6 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
+    'channels',
+    'channels_redis',
     "account",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -72,7 +75,18 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "sajiloroomfinder.wsgi.application"
+# WSGI_APPLICATION = "sajiloroomfinder.wsgi.application" Daphne
+ASGI_APPLICATION= "sajiloroomfinder.asgi.application"
+
+# Channels
+CHANNEL_LAYERS={
+    'default':{
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'Config':{
+            'hosts': [('127.0.0.1',6379)]
+        }
+    }
+}
 
 
 # Database

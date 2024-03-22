@@ -1,2 +1,36 @@
+# Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+# Django
+*.log
+db.sqlite3
+*/media/
+*/static/
+*/migrations/*.py
+*/migrations/*.pyc
+local_settings.py
+
+# Virtual Environment
+venv/
+env/
+myenv/
+
+# IDE and Editor Files
+.vscode/
+.idea/
+
+# Dependency Management
+pipfile.lock
+*/requirements.txt
+
+# Compiled Assets
+node_modules/
+dist/
+*.min.js
+*.min.css
+
+# Environment Configuration
 .env
-myenv
